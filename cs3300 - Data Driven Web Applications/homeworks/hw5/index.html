@@ -1,0 +1,192 @@
+<!-- LUKE GOODMAN (lng26)	INFO3300 - HW4 -->
+<html>
+<head>
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+	<!-- Load the d3 library. -->
+	<script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+	<style>body { font-family: "Open Sans"; } div { margin:</strong> 30px; }
+	svg { border: 1px solid black; }
+	.axis path,
+	.axis line { fill: none; stroke: black; shape-rendering: crispEdges; }
+	</style>
+	<title>Luke Goodman (lng26)</title>
+</head>
+<body>
+<h1>Luke Goodman (lng26) - INFO 3300 - HW5</h1>
+<p id="p1"><strong>PROBLEM 1:</strong> What is the probability that you were at Sapsucker Woods, NOT considering any bird
+sightings? (that is, calculate the prior probability that you went to Sapsucker Woods) (5 pts) <br><br>
+Probability of being in Sapsucker Woods = P(SW)<br>
+P(SW) + P(SW)/3 = 1.0<br>
+<strong>P(SW) = 0.75</strong>
+</p>
+
+<p id="p2"><strong>PROBLEM 2:</strong> For each location and bird species, what is the probability that, if you select one of the
+sightings from that location at random, it will be an instance of that species? (12 pts)<br>
+<strong>Stewart Park</strong>
+<ul>
+<li>P(CG|SP) = 9000/10110 = ~0.89</li>
+<li>P(BH|SP) = 35/10110 = ~0.0035</li>
+<li>P(NP|SP) = 70/10110 = ~0.007</li>
+<li>P(RTH|SP) = 40/10110 = ~0.004</li>
+<li>P(PW|SP) = 15/10110 = ~0.0015</li>
+<li>P(M|SP) = 950/10110 = ~0.094</li>
+</ul>
+<strong>Sapsucker Woods</strong>
+<ul>
+<li>P(CG|SW) = 300/761 = ~0.394</li>
+<li>P(BH|SW) = 1/761 = ~0.0013</li>
+<li>P(NP|SW) = 25/761 = ~0.033</li>
+<li>P(RTH|SW) = 20/761 = ~0.0263</li>
+<li>P(PW|SW) = 15/761 = ~0.0197</li>
+<li>P(M|SW) = 400/761 = ~0.5256</li>
+</ul>
+
+</p>
+
+
+<p id="p3"><strong>PROBLEM 3:</strong> Assume you are at Sapsucker Woods, and that bird sightings are independent. What is
+the probability of seeing a red-tailed hawk and a pileated woodpecker, using the estimated
+probabilities from the previous question? (that is, the conditional probability of the two bird
+sightings given your location) (8 pts)<br><br>
+P(RTH&PW | SW) = P(RTH|SW)*P(PW|SW) = 0.0263*0.0197 = <strong>0.000518</strong><br>
+
+</p>
+
+
+<p id="p4"><strong>PROBLEM 4:</strong> What is the probability of seeing a red-tailed hawk and a pileated woodpecker and being
+at Sapsucker Woods? (that is, the joint probability of the sightings and the location) (5 pts) <br><br>
+P(RTH&PW&SW) = 0.75*0.0263*0.0197 = <strong>0.0003886</strong>
+
+</p>
+
+<p id="p5"><strong>PROBLEM 5:</strong> Write a javascript function "logProb" that takes two arguments, a location and an array of
+bird species (for example ["CG", "BH", "NP"]), and returns the log of the probability of those
+events using the probabilities you estimated in the previous questions. The function should
+support passing an empty array [] of sightings. (16 pts)<br><br>
+<script>
+var logProb = function(loc, birds) {
+	var probs;
+	if (loc == 'Stewart Park') {
+		probs = {'loc':0.25, 'CG': 0.89, 'BH': 0.0035, 'NP': 0.007, 'RTH': 0.004, 'PW': 0.0015, 'M': 0.094};
+	} else {
+		probs = {'loc':0.75, 'CG': 0.394, 'BH': 0.0013, 'NP': 0.033, 'RTH': 0.0263, 'PW': 0.0197, 'M': 0.5256};
+	}
+	var p = probs['loc'];
+	for (i in birds) {
+		p = p*probs[birds[i]];
+	}
+	return Math.log(p);
+}
+</script>
+</p>
+
+<p id="p6"><strong>PROBLEM 6:</strong> Now let's consider your mystery birding trip. Compute the probability of seeing those six
+species assuming you were at Sapsucker Woods and then again assuming you were at Stewart Park. 
+Use the function you created in Q5 to calculate, for both locations, the log probabilities of seven observation arrays, 
+starting with the empty array and adding one bird species each time: 
+[], ["CG"], ["CG", "BH"], ..., ["CG", "BH", "NP", "RTH", "PW", "M"]. 
+(14 pts, you may combine your answer with the answer for the next problem.)<br>
+<p id="p7"><strong>PROBLEM 7:</strong> Write a JSON array with one element for each of the observation arrays in the previous
+problem. Each element should be an object with three properties: the name of the bird
+species added (use "Prior" for the first element), and the log probability values you
+calculated for the two sites that you calculated in the previous problem. (5 pts) <br>
+</p>
+<strong>Stewart Park</strong>
+<ul id="stew"></ul>
+<strong>Sapsucker Woods</strong>
+<ul id="sap"></ul>
+<script>
+	var birds = ["CG", "BH", "NP", "RTH", "PW", "M"]
+	var stew = d3.select("#stew");
+	var sap = d3.select("#sap");
+	var ind;
+	var json = []; //for P7
+	//P6 adding to html lists
+	stew.append("li").text("log(P(SP)) = " + logProb("Stewart Park", []));
+	sap.append("li").text("log(P(SW)) = " + logProb("Sapsucker Woods", []));
+	//P7
+	json.push({"species": "Prior", 
+					"stewProb": logProb("Stewart Park", []),
+					"sapProb": logProb("Sapsucker Woods", [])
+					});
+	//P6 adding to html lists
+	for (i in birds) {
+		ind = parseInt(i) + 1;
+		stew.append("li").text("log(P(" + birds.slice(0, ind) + "|SP)) = " + logProb("Stewart Park", birds.slice(0, ind)));
+		sap.append("li").text("log(P(" + birds.slice(0, ind) + "|SW)) = " + logProb("Sapsucker Woods", birds.slice(0, ind)));
+		//P7 adding to json object array
+		json.push({"species": birds[i], 
+					"stewProb": logProb("Stewart Park", birds.slice(0, ind)),
+					"sapProb": logProb("Sapsucker Woods", birds.slice(0, ind))
+					});
+	}
+</script>
+</p>
+
+<p id="p8"><strong>PROBLEM 8:</strong> Create a line plot that shows how each observed species changes the difference between
+the log probabilities of the sequence of species at the two locations. Make a d3 ordinal axis
+with the sequence of species ("Prior", "CG", "B", ..., "M") on the x-axis. Make a scale for the
+y-axis centered at 0 for the difference in log probabilities. Use d3 "line" to show the log
+probability of the observations so far assuming you were at Sapsucker Woods minus the log
+probability of the same observations assuming you were at Stewart Park. (30 pts)<br><br>
+<div id="eight"></div>
+<script>
+var height = 300,
+	width = 500,
+	padding = 40,
+	linegraph = d3.select("#eight").append("svg")
+					.attr("height", height).attr("width", width);
+
+birds.unshift("Prior"); //adding "Prior" to beginning of birds list
+var xScale = d3.scale.ordinal()
+	.domain(birds).rangeRoundBands([0 + padding, width - 10]);
+
+var yScale = d3.scale.linear()
+	.domain([d3.min(json, function (d) { return -Math.abs(d.stewProb - d.sapProb); }),
+		d3.max(json, function (d) { return Math.abs(d.stewProb - d.sapProb); })])
+	.range([height - 10, 10]);
+
+var xAxis = d3.svg.axis().scale(xScale);
+linegraph.append("g")
+  .attr("class", "axis")
+  .attr("transform", "translate(0, " + (height - 10)/2 + ")")
+  .call(xAxis);
+
+var yAxis = d3.svg.axis().scale(yScale).orient("left");
+linegraph.append("g")
+	.attr("class", "axis")
+	.attr("transform", "translate(" + padding + ", 0)")
+	.call(yAxis);
+
+var lineFunc = d3.svg.line()
+	.x(function(d) {	return xScale(d.species); })
+	.y(function(d) { return yScale(d.sapProb - d.stewProb); })
+	.interpolate('linear');
+
+linegraph.append('svg:path')
+  .attr('d', lineFunc(json))
+  .attr('stroke', 'blue')
+  .attr('stroke-width', 2)
+  .attr('fill', 'none')
+  .attr("transform", "translate(" + padding + ", 0)");
+</script>
+
+</p>
+
+<p id="p9"><strong>PROBLEM 9:</strong> Which site is more likely to have been the location of your trip? Which observation(s) has/
+have the most effect on the final difference in log probabilities? Which have the least effect?
+Does the prior affect your final guess? (5 pts) <br><br>
+<strong>
+Sapsucker Woods was more likely the location of the trip. All of the observations following
+the addition of the northern pintail (RTH, PW, and M) had the most significant effect on the 
+final difference as they showed substantial increases in the difference in favor of Sapsucker. The addition of the Canada
+ goose and bufflehead are the least significant and they are both small movements in favor of Stewart Park. 
+The prior does contribute a significant amount to favoring Sapsucker initially, and provides a strong weighting 
+system biased towards Sapsucker as species probabilities are added.
+</strong>
+
+</p>
+
+<!-- <script src="main.js"></script> -->
+</body>
+</html>

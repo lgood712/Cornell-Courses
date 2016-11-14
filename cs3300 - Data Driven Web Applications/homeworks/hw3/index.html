@@ -1,0 +1,85 @@
+<!-- LUKE GOODMAN (lng26)	INFO3300 - HW3 -->
+<html>
+<head>
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+	<!-- Load the d3 library. -->
+	<script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+	<style>body { font-family: "Open Sans"; } div { margin:</b> 30px; }
+	svg { border: 1px solid black; }
+	circle { stroke : red; stroke-width :4; }
+	</style>
+	<title>Luke Goodman (lng26)</title>
+</head>
+<body>
+
+<p id="p1"><b>Problem 1:</b> Create a 200x200 pixel SVG element with the word "Cornell" in red, centered in
+the exact middle (vertically and horizontally), using the Palatino typeface. Consult
+the SVG specification to find out how to change color and font attributes and set
+text alignment. Put a small blue circle at 100,100 so we can see that your text is
+centered. If you do not have Palatino, you may use another font to test your code.
+(20pts)<br>
+
+<svg height="200" width="200">
+</svg>
+</p>
+
+<p id="p2"><b>Problem 2:</b>  Create a 200x200 pixel SVG element. Reproduce the plot in Figure 2 of the
+Wickham "Layered Grammar of Graphics" reading using SVG elements. Recalculate
+the pixel positions for the (x, y) coordinates in Table 2 as necessary. Remember to
+account for the "padding" pixels below and to the left of the axes. You do NOT need
+to include the short tick marks. Table 2 contains data values. Table 3 contains those
+data values transformed into pixel coordinates. You will need to recalculate these
+pixel coordinates. The result may not look exactly like Figure 2. We will know what
+to expect for the data in Table 2. (20pts)<br>
+<svg>
+	
+</svg>
+</p>
+
+
+<p id="p3"><b>Problem 3:</b> In class we created a plot that looked not unlike the Japanese flag. Use SVG
+<path> elements to create the Chinese flag (five yellow stars on red). You may
+substitute another flag as long as it has elements that require a path, not just
+rectangles (eg Canada, but not France). The flag should be recognizable, but does
+not have to be precise. Hint: make one star, copy it several times, and then use
+some combination of translate() and scale() transformations. (20pts)<br>
+<svg>
+
+</svg>
+</p>
+
+
+<p id="p4"><b>Problem 4:</b> Make a histogram that represents the frequency of numbers in this dataset:
+var samples = [7, 4, 5, 3, 15, 5, 7, 3, 4, 2, 15, 4, 5, 5, 5];
+The x-axis will correspond to values from the dataset, and the y-axis will correspond
+to the frequency of those values. Figure out how to map those numbers into pixel
+coordinates. Consider the following dataset:<br>
+A. Make a histogram of the data values using SVG rectangles (labels optional).
+Create one rectangle for each distinct value in the dataset. Each one should be
+positioned so that it is centered at the x-axis value that corresponds to its data
+value. For example, the middle of the bar for "5" should be at the pixel coordinate
+that corresponds to the value 5. In other words, leave empty space even for values
+that have no observations: there should be a gap between the bars for 7 and 15.
+(20pts)<br>
+B. Calculate the mean, median, mode, and standard deviation and record those
+numbers in the <p> tag. You may use whatever tool you like, we only need to see
+the result. (5 pts)<br>
+C. Add vertical lines to the plot corresponding to the mean (in red), median (in blue)
+and mode (in purple). For the "mean" line, make a line from the top of the figure to
+the bottom, at the x position in the figure that corresponds to the mean you
+calculated. If you find that two lines are at the same x position, you can either add a
+slight offset (this is known as "jitter") or make one of the lines wider than the other.
+(5 pts)<br>
+D. Use an SVG rectangle with a semi-transparent fill to show the region covering one
+standard deviation on both sides of the mean. In other words, make a rectangle
+from the top of the figure to the bottom that is centered at the mean, and two
+standard deviations wide. (5pts)<br>
+E. Calculate the probability that a randomly selected datapoint is equal to 5 and
+record it in the &lt;p> tag. (5pts)<br>
+
+<svg>
+</svg>
+</p>
+
+</body>
+</html>

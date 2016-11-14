@@ -1,0 +1,64 @@
+<!-- LUKE GOODMAN (lng26)	INFO3300 - HW7 -->
+<html>
+<head>
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+	<!-- Load the d3 library. -->
+	<script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+	<style>body { font-family: "Open Sans"; } div { margin:</strong> 30px; }
+	svg { border: 1px solid black; }
+	.axis path,
+	.axis line { fill: none; stroke: black; shape-rendering: crispEdges; }
+    .bar { fill: lightblue; stroke: grey; }
+    .answer { font-style: italic; color: red; }
+    .label { font-size: 10px; font-family: arial; }
+	</style>
+	<title>Luke Goodman (lng26)</title>
+</head>
+<body>
+<h1>Luke Goodman (lng26) - INFO 3300 - HW7</h1>
+    
+<p id="p1"><strong>PROBLEM 1:</strong> Convert the graph layout code in the notes from 3/18/15 into a function called plotGraph that takes two arguments, a graph and the ID of a div. (HINT: in the example code there is an anonymous callback function, which is almost exactly what you need.) This function should create an SVG element in that div and create a force layout for the graph in that SVG element. (25 pts)
+</p>
+    
+<p id="p2"><strong>PROBLEM 2:</strong> Create six random graphs with 30 nodes and 60 edges using the randomGraph function and plot them in the div "#randomGraphs" using your plotGraph function. (You may want to reduce the size of the SVG element and the node-circles in order to show more graphs. ) Now do the same with six graphs sampled from the function preferentialGraph with randomness set to 1.5 (use the same number of nodes and edges for all graphs). Plot these six graphs in the div "#preferentialGraphs1". Do the same for six graphs with randomness set to 9.0, and six graphs with randomness set to 45.0, in the divs "#preferentialGraphs2" and "#preferentialGraphs3", respectively. You should have a grid of four rows and six columns of graphs (it's fine if graphs within a row wrap to a new line as long as you can tell which row is which). (10 pts)<br>
+    <div class="answer">Random Graphs</div>
+    <div class="answer" id="randomGraphs"></div>
+    <div class="answer">Preferential Graphs, Randomness=1.5</div>
+    <div class="answer" id="preferentialGraphs1"></div>
+    <div class="answer">Preferential Graphs, Randomness=9.0</div>
+    <div class="answer" id="preferentialGraphs2"></div>
+    <div class="answer">Preferential Graphs, Randomness=45.0</div>
+    <div class="answer" id="preferentialGraphs3"></div>
+</p>
+
+<p id="p3"><strong>PROBLEM 3:</strong> Which setting of randomness looks more like the random graphs on the top row? (10 pts)<br>
+    <div class="answer">The graphs with randomness=45.0 look the most like the random graphs on the top row.</div>
+</p>
+    
+<p id="p4"><strong>PROBLEM 4:</strong> Let's try to quantify this difference. D3 helpfully sets a variable weight on each node object that represents the degree of that node. Modify your plotGraph function so that it calculates the maximum degree of any node in the graph. Add a text element to the SVG in the top right corner (you may specify exact pixel coordinates) showing this maximum degree. Which of the preferential attachment parameter settings produces maximum degrees most similar to the random network? Why do you think this is so? (10 pts)
+<br>
+    <div class="answer">The graphs with randomness=45.0 produce maximum degrees most similar to the random network. This is probably a result of the increased probability that an edge forms randomly, instead of via the preferential attachment method which leads to a few nodes with very high degrees.</div>
+</p>
+    
+<p id="p5"><strong>PROBLEM 5:</strong> Using the code in the notes from 3/13/15 as an example, create a function called discreteHistogram. Similar to plotGraph, this function should take, as arguments, an array of integers and the ID of a page element. The example code will display histogram bars (20 should be fine) and add lines showing the expected counts for a Poisson distribution with the same mean as the sample. Keep these Poisson lines, but feel free to remove the x and y axes and the number on top of each bar to reduce visual clutter. (25 pts)<br>    
+</p>
+
+<p id="p6"><strong>PROBLEM 6:</strong> Generate 10 random graphs with 30 nodes and 60 edges. For each of the 10 graphs,
+    <ul>
+        <li>a. use plotGraph to show the graph</li>
+        <li>b. use the Javascript map function to create an array containing the degrees of the 30 nodes (remember that d3 stores node degree in a variable called weight on each node object)</li>
+        <li>c. use discreteHistogram to show the distribution of node degrees in the graph. (You may want to make the histogram plots smaller than they are in the example.)</li>
+    </ul>
+(10 pts)<br>
+    <div id="p6answers"></div>
+
+</p>
+
+<p id="p7"><strong>PROBLEM 7:</strong> What do you notice? Why do you think random graphs are called Poisson graphs? The other graph sampling algorithms may provide a useful contrast. (10 pts)
+    <div class="answer">Many of the bar charts tend toward a normal or Poisson distribution. Random graphs with a large enough sample sizes will always do this, which is why they are called Poisson graphs.</div>
+
+</p>
+<script src="helpers.js"></script>   
+<script src="main.js" ></script>
+</body>
+</html>

@@ -1,0 +1,88 @@
+<!-- LUKE GOODMAN (lng26)	INFO3300 - HW4 -->
+<html>
+<head>
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+	<!-- Load the d3 library. -->
+	<script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+	<script src="http://d3js.org/topojson.v1.min.js"></script>
+	<style>body { font-family: "Open Sans"; } div { margin:</b> 30px; }
+	svg { border: 1px solid black; }
+	</style>
+	<title>Luke Goodman (lng26)</title>
+</head>
+<body>
+<h1>Luke Goodman (lng26) - INFO 3300 - HW4</h1>
+<p id="p1"><b>Problem 1:</b> Revisiting HW2, Q5: Create three &lt;div> elements with class "findable". Using a single d3
+function, select all the nodes with this class. Set the content of these nodes to "found", and
+set the style to display in red text. Consult the d3js.org API documentation as necessary. (10
+pts) <br>
+<div class="findable"></div>
+<div class="findable"></div>
+<div class="findable"></div>
+
+</p>
+
+<p id="p2"><b>Problem 2:</b> In problem 2 on HW3 you recreated Fig. 2 from the Wickham reading using SVG
+elements. Now create the same plot again, but this time using d3 functions. First create x
+and y scale functions that map from data coordinates to SVG coordinates (10 pts). Add
+circles and rectangles, with positions given by the x and y scales. You don't need to use
+data() or enter() functions: it's fine if you do a separate command for each shape (10
+pts). Add d3 axes, again using the x and y scale functions (10 pts). Now add an event
+listener that changes the color of a circles or rectangles to blue when it is clicked, using d3
+selections (10 pts).<br>
+
+<div id="wick"></div>
+
+</p>
+
+
+<p id="p3"><b>Problem 3:</b> In this problem we're going to plot some data about English word frequencies from
+Google Books. The file http://mimno.infosci.cornell.edu/info3300/zipf.json contains a
+Javascript snippet that defines an array of objects. Each object represents a word, sorted by
+its frequency. The most frequent word, "of", occurs 15 billion times. The 512th most
+frequent word, "middle", occurs 45 million times. Copy this snippet into a script element in
+your homework document. Axes are not required for this problem, but you're welcome to
+add them.<br>
+<br>
+A. Create a 200x200 pixel SVG element using d3 functions. Create two linear scale
+functions: an x scale for the "rank" and a y scale for the "count". Choose the "range"
+attributes to be appropriate for "rank" and "count". Use d3 to add text elements to the plot
+for each word in the data set. Use a loop or a "forEach" statement; you may not use a
+separate command for each word. Is this visualization useful? Why or why not? (10 pts)<br>
+<div id="threeA"></div>
+<b>This visualization is not the most useful as it does not clearly display the relative difference between 
+word counts among the ranks after "at" which is ranked 16th. The word displays are crowded and offset horizontally 
+is pretty negligible due to large range of ranks.</b>
+<br>
+B. In this section we'll transform the data as you create the text elements. Create a second
+200x200 SVG element. Add the same points, but this time calculate the log of word's rank
+(use Math.log()), convert that value to a pixel value with a linear scale, and set "x" to that
+scaled log value. Similarly set "y" to the scaled log of the count. You will need to create new
+x and y scale functions using appropriate values for the "domain". How does this version
+differ from the previous version? (10 pts)<br>
+<div id="threeB"></div>
+<b>This version more clearly displays the Zipfian distribution of the word counts in relation to their rank.
+It shows a logarithmic correlation between rank and relative word count in the corpus/document.</b>
+<br>
+C. Now rather than transforming the data, let's change the scale functions. Create a third
+200x200 SVG element, and create two log scale functions using the same "domain" values
+as in part A. See the d3js.org API documentation as necessary. Use d3 to add text elements
+to this new plot, again using the original values for "rank" and "count". (10 pts)<br>
+<div id="threeC"></div>
+</p>
+
+
+<p id="p4"><b>Problem 4:</b> Map yourself! Find the longitude and latitude coordinates of three places you have lived,
+or want to live. Use d3 to create a map of the US or the world, as appropriate (10 pts). Use
+the JSON geographic files included with the class notes on GitHub or find your own. Select a
+projection for the map. Consult the d3 documentation for options. If you choose, you may
+want to use one of the projections from the d3-geo-projection package, which will require
+an additional javascript library file, available at https://github.com/d3/d3-geo-projection/.
+Place colored circles and text labels on the map in the locations you selected. (10 pts) <br>
+
+<div id="four"></div>
+</p>
+
+<script src="main.js"></script>
+</body>
+</html>
