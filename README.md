@@ -17,7 +17,7 @@ I will keep this updated as I add to the repository.
 	-	Project 2: Interactive Visualization
 -	INFO/CS 4300 - Information Retrieval (Java)
 	-	Project 3: Mini Search Engine
--INFO/CS 4320 - Rapid Prototyping (C/Arduino)
+- INFO/CS 4320 - Rapid Prototyping (C/Arduino)
 	- Design Exercise 1: Rudimentary Simon
 	- Design Exercise 2: Jack in the Box
 	- Design Exercise 3: 3D Puzzle
