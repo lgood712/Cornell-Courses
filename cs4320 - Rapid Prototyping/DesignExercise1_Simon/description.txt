@@ -1,0 +1,28 @@
+Luke Goodman (lng26)
+Link to YouTube video:
+https://www.youtube.com/watch?v=uOx_PqL34-A
+
+Description of Design Exercise 1:
+
+Admittedly, I first set out to build a three button Simon game, where the user
+watches a pattern of colored lights and repeats it with the buttons, imitating
+progressively longer sequences. However, after realizing that our kit did not
+contain three buttons, I built a derivative game that is like a combination of
+Simon and Bop It.
+
+Like in Simon, a user watches a pattern of flashing lights (red, green, or blue),
+starting with one, and if the user correctly repeats the pattern, show longer
+sequences. Instead of three buttons, the user has three different inputs: a red
+button (representing the red light), a IR range sensor (representing the green
+light, and a blue potentiometer (representing the blue light).
+
+Any significant change from the default state of the IR sensor is equivalent to
+what would be a button push. The same goes for any change from the last recorded
+state of the potentiometer.
+
+The game begins upon Serial input of 's'. At each successful completion of a
+a pattern, the Serial monitor displays a message saying which stage has been
+completed, and if the user fails at all, the monitor immediately displays a
+consolation message and ends the game. If the user wins however many stages
+that the programmer defines, they get a victory message and the light flashes
+quickly through the three colors for ~10 seconds.

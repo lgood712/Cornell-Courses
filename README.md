@@ -15,9 +15,14 @@ I will keep this updated as I add to the repository.
 	-	Various Homework Assignments
 	-	Project 1: Static Visualization
 	-	Project 2: Interactive Visualization
--	INFO/CS 4240 - Intro to Natural Language Processing (Python)
+-	INFO/CS 4300 - Information Retrieval (Java)
+	-	Project 3: Mini Search Engine
+-INFO/CS 4320 - Rapid Prototyping (C/Arduino)
+	- Design Exercise 1: Rudimentary Simon
+	- Design Exercise 2: Jack in the Box
+	- Design Exercise 3: 3D Puzzle
+	- Final Project: Laser Harp
+-	INFO/CS 4740 - Intro to Natural Language Processing (Python)
 	-	Project 1: Language Modeling
 	-	Project 2: Word Sense Disambiguation
 	-	Project 3: Named Entity Recognition
--	INFO/CS 4300 - Information Retrieval (Java)
-	-	Project 3: Mini Search Engine
