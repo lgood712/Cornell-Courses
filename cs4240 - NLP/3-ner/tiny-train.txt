@@ -1,0 +1,6 @@
+Luke	wears	Gap	Jeans
+NNP	V	NNP	NNP
+B-PER	O	B-MISC	I-MISC
+Fred	lives	in	Kentucky
+NNP	V	IN	NNP
+B-PER	O	O	B-LOC

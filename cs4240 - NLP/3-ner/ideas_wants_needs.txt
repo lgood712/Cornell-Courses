@@ -1,0 +1,13 @@
+Needs:
+    -Extension! MEMM? Larger n-grams? Different smoothing?
+        - pos|tag emissions might already count as a small extension
+
+Wants:
+    -Calculate precision, recall, and F1 for validation sets
+    -Switch word to pos
+
+Ideas:
+    -Incorporate pos|tag emissions (DONE: improved Kaggle score >40%, still only 75.7% though)
+    -Incorporate known entities from training into viterbi paths, could also help in identifying full paths if done correctly
+        i.e. Set parts of path that are known entities, then viterbi around/through them
+    -Somehow combine the matrix updates into one loop/function for efficiency?
